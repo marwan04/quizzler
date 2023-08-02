@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 void main() => runApp(Quizzler());
 
 class Quizzler extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,27 +28,14 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List <Widget> score = [
-    const Icon(
-      Icons.check,
-      color: Colors.green,
-    ),
-    const Icon(
-      Icons.close,
-      color: Colors.red,
-    ),
-    const Icon(
-      Icons.close,
-      color: Colors.red,
-    ),
-    const Icon(
-      Icons.close,
-      color: Colors.red,
-    ),
-    const Icon(
-      Icons.close,
-      color: Colors.red,
-    ),
+
   ];
+  List <String> questions = [
+  'You can lead a cow down stairs but not up stairs.',
+  'Approximately one quarter of human bones are in the feet.',
+  'A slug\'s blood is green.',
+  ];
+  int num = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -54,15 +43,15 @@ class _QuizPageState extends State<QuizPage> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        const Expanded(
+        Expanded(
           flex: 5,
           child: Padding(
-            padding: EdgeInsets.all(10.0),
+            padding:const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'This is where the question text will go.',
+                questions[num],
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style:const TextStyle(
                   fontSize: 25.0,
                   color: Colors.white,
                 ),
@@ -86,15 +75,8 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 setState(() {
-                  score.add(
-                      const Icon(
-                        Icons.check,
-                        color: Colors.green,
-                      )
-                  );
+                  num++;
                 });
-                //The user picked true.
-
               },
             ),
           ),
@@ -112,7 +94,9 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                //The user picked false.
+                setState(() {
+                  num++;
+                });
               },
             ),
           ),
