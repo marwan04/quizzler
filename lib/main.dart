@@ -35,6 +35,11 @@ class _QuizPageState extends State<QuizPage> {
   'Approximately one quarter of human bones are in the feet.',
   'A slug\'s blood is green.',
   ];
+  List <bool> answers = [
+    false,
+    true,
+    true,
+  ];
   int num = 0;
 
   @override
@@ -74,6 +79,11 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
+                bool correctAnswer = answers[num];
+
+                if (correctAnswer == true) {
+
+                }
                 setState(() {
                   num++;
                 });
@@ -94,6 +104,11 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
+                bool correctAnswer = answers[num];
+
+                if (correctAnswer == true) {
+
+                }
                 setState(() {
                   num++;
                 });
