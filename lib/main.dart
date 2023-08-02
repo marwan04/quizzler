@@ -43,10 +43,16 @@ class _QuizPageState extends State<QuizPage> {
   //   true,
   //   true,
   // ];
+  void cheackAnswer(bool userAnswer) {
+    bool correctAnswer = quizBrain.getQuestionAnswer();
+    if (userAnswer == correctAnswer){
+      score.add(const Icon(Icons.check , color: Colors.green));
+    }
+    else{
+      score.add(const Icon(Icons.close , color: Colors.red));
+    }
+  }
 
-
-
-  int num = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -85,13 +91,9 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                bool correctAnswer = quizBrain.getQuestionAnswer();
-                if (correctAnswer == true) {
-
-                }
-                quizBrain.nextQuestion();
                 setState(() {
-                  num++;
+                  cheackAnswer(true);
+                  quizBrain.nextQuestion();
                 });
               },
             ),
@@ -110,14 +112,9 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                bool correctAnswer = quizBrain.getQuestionAnswer();
-
-                if (correctAnswer == true) {
-
-                }
-                quizBrain.nextQuestion();
                 setState(() {
-                  num++;
+                  cheackAnswer(false);
+                  quizBrain.nextQuestion();
                 });
               },
             ),
