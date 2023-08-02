@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'quiz_brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 QuizBrain quizBrain = QuizBrain();
 
@@ -94,6 +95,29 @@ class _QuizPageState extends State<QuizPage> {
                 setState(() {
                   cheackAnswer(true);
                   quizBrain.nextQuestion();
+                  if (quizBrain.isFinished()) {
+                    Alert(
+                      context: context,
+                      title: "Quiz finished",
+                      desc: "You have Reached the end of the quiz",
+                      buttons: [
+                        DialogButton(
+                          child: Text(
+                            "Restart the quiz",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              quizBrain.reset();
+                              score.clear();
+                              Navigator.pop(context);
+                            });
+                          },
+                          width: 160,
+                        )
+                      ],
+                    ).show();
+                  }
                 });
               },
             ),
@@ -115,6 +139,29 @@ class _QuizPageState extends State<QuizPage> {
                 setState(() {
                   cheackAnswer(false);
                   quizBrain.nextQuestion();
+                  if (quizBrain.isFinished()) {
+                    Alert(
+                      context: context,
+                      title: "Quiz finished",
+                      desc: "You have Reached the end of the quiz",
+                      buttons: [
+                        DialogButton(
+                          child: Text(
+                            "Restart the quiz",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              quizBrain.reset();
+                              score.clear();
+                              Navigator.pop(context);
+                            });
+                          },
+                          width: 160,
+                        )
+                      ],
+                    ).show();
+                  }
                 });
               },
             ),
